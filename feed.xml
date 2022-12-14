@@ -1,22 +1,46 @@
----
-layout: null
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title }}</title>
-    <description>{{ site.description }}</description>
-    <link>{{ site.url }}</link>
-    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
-    {% for post in site.posts limit:13%}
+    <title>LiberXue|FullStack|独立开发者|jekyll blog|GitHub blog</title>
+    <description>Full Stack独立开发者|欢迎来到 LiberXue「角落」侃侃理想、谈谈人生、敲敲代码。</description>
+    <link>https://cbi-ntu.github.io/CBI-Project-Website.github.io</link>
+    <atom:link href="https://cbi-ntu.github.io/CBI-Project-Website.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    
       <item>
-        <title>{{ post.title }}</title>
-        <category>{{ post.category }}</category>
-        <description>{{ post.content | strip_html | strip_newlines | truncate: 100 }}</description>
-        <pubDate>{{ post.date | date: "%F %H:%M:%S " }}</pubDate>
-        <link>{{ site.url }}{{ post.url }}</link>
-        <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+        <title>PROTREC: a probability-based approach for recovering missing proteins based on biological networks</title>
+        <category>书籍</category>
+        <description>AbstractA novel network-based approach for predicting missing proteins (MPs) is proposed here. Th...</description>
+        <pubDate>2022-01-01 00:00:00 </pubDate>
+        <link>https://cbi-ntu.github.io/CBI-Project-Website.github.io/2022/01/01/bookindex.html</link>
+        <guid isPermaLink="true">https://cbi-ntu.github.io/CBI-Project-Website.github.io/2022/01/01/bookindex.html</guid>
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Redis,Memcache的区别和具体应用场景及选择</title>
+        <category>负载均衡</category>
+        <description>Memcached简介Memcached是以LiveJurnal旗下Danga Interactive公司的Bard Fitzpatric为首开发的高性能分布式内存缓存服务器。其本质上就是一个内...</description>
+        <pubDate>2017-07-30 10:06:42 </pubDate>
+        <link>https://cbi-ntu.github.io/CBI-Project-Website.github.io/2017/07/30/memcacheandredis.html</link>
+        <guid isPermaLink="true">https://cbi-ntu.github.io/CBI-Project-Website.github.io/2017/07/30/memcacheandredis.html</guid>
+      </item>
+    
+      <item>
+        <title>Git忽略规则及.gitignore规则正确姿势</title>
+        <category>git</category>
+        <description>实现需求在git中如果想忽略掉某个文件或者文件夹，不想这个文件或者文件夹提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存...</description>
+        <pubDate>2017-07-16 23:45:56 </pubDate>
+        <link>https://cbi-ntu.github.io/CBI-Project-Website.github.io/2017/07/16/gitignore.html</link>
+        <guid isPermaLink="true">https://cbi-ntu.github.io/CBI-Project-Website.github.io/2017/07/16/gitignore.html</guid>
+      </item>
+    
+      <item>
+        <title>GitHub当作私密的版本控制系统远端版本库私有化哈</title>
+        <category>git</category>
+        <description>目的我打算把所有服务器的配置文件用git管理起来，这样可以记录配置变更状况。 但是有一个问题是，如何多人协作？服务器配置信息非常敏感，如果这个版本库泄漏，整个公司的服务器架构就彻底泄漏了。 这个...</description>
+        <pubDate>2017-03-07 00:00:00 </pubDate>
+        <link>https://cbi-ntu.github.io/CBI-Project-Website.github.io/2017/03/07/githubyaunchengjiami.html</link>
+        <guid isPermaLink="true">https://cbi-ntu.github.io/CBI-Project-Website.github.io/2017/03/07/githubyaunchengjiami.html</guid>
+      </item>
+    
   </channel>
 </rss>
