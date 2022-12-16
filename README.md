@@ -8,7 +8,7 @@
                           Copyright (c) 2016-2018 liberxue
                                  http://www.liberxue.com
                            
-#### liberxue.github.io preview (demo) (http://www.liberxue.com)
+####  preview (demo) (https://cbi-ntu.github.io/CBI-Project-Website.github.io/)
 
 #### `Jekyll Themes`
 ----------
