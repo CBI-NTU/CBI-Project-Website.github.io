@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LiberXue|FullStack|独立开发者|jekyll blog|GitHub blog</title>
-    <description>Full Stack独立开发者|欢迎来到 LiberXue「角落」侃侃理想、谈谈人生、敲敲代码。</description>
+    <title>Centre for Biomedical Informatics | NTU Singapore</title>
+    <description>LKCMedicine Centre for Biomedical Informatics</description>
     <link>https://cbi-ntu.github.io/CBI-Project-Website.github.io</link>
     <atom:link href="https://cbi-ntu.github.io/CBI-Project-Website.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>PROTREC: a probability-based approach for recovering missing proteins based on biological networks</title>
-        <category>书籍</category>
+        <category>about</category>
         <description>AbstractA novel network-based approach for predicting missing proteins (MPs) is proposed here. Th...</description>
         <pubDate>2022-01-01 00:00:00 </pubDate>
         <link>https://cbi-ntu.github.io/CBI-Project-Website.github.io/2022/01/01/bookindex.html</link>
