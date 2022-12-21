@@ -7,15 +7,6 @@
     <atom:link href="https://cbi-ntu.github.io/CBI-Project-Website.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>PROTREC: a probability-based approach for recovering missing proteins based on biological networks</title>
-        <category>Projects</category>
-        <description>AbstractA novel network-based approach for predicting missing proteins (MPs) is proposed here. Th...</description>
-        <pubDate>2022-01-01 00:00:00 </pubDate>
-        <link>https://cbi-ntu.github.io/CBI-Project-Website.github.io/2022/01/01/bookindex.html</link>
-        <guid isPermaLink="true">https://cbi-ntu.github.io/CBI-Project-Website.github.io/2022/01/01/bookindex.html</guid>
-      </item>
-    
-      <item>
         <title>Partnership of CBI with XYZ ...</title>
         <category>Partnerships</category>
         <description>Lorem ipsumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid...</description>
