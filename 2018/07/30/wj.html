@@ -322,12 +322,12 @@ $(function () {
 </div>
 <div class="cleaner"></div>
 
-<p>«!–ul&gt;
-    &lt;li&gt;<a href="#home">Home</a>&lt;/li&gt;
-    &lt;li&gt;<a href="#aboutus">Methods</a>&lt;/li&gt;
-    &lt;li&gt;<a href="#example">Example</a>&lt;/li&gt;
-    &lt;li&gt;<a href="#submit">Submit your dataset</a>&lt;/li&gt;
-    &lt;li class="last"&gt;<a href="#submit">Contact us</a>&lt;/li&gt;–&gt;</p>
+<!--ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#aboutus">Methods</a></li>
+    <li><a href="#example">Example</a></li>
+    <li><a href="#submit">Submit your dataset</a></li>
+    <li class="last"><a href="#submit">Contact us</a></li>-->
 
 <h2 id="methods-description">Methods Description</h2>
 <h3 id="protrec-1">PROTREC</h3>
@@ -338,57 +338,37 @@ $(function () {
 
 <h3 id="fcs">FCS</h3>
 <p>FCS tests whether a network is significantly enriched given the observed proteins. Given a set of observed proteins in a proteomics screen \(S\), and a list of component proteins \(M\) from protein complex \(C\), an observed overlap \(O\), which is expressed as: \[O=\frac{|S\cap M|}{|M|}\]To determine if the overlap \(O\) is significant, a set \(N\) of randomized complexes of size are generated using a reference pool of unique proteins drawn from the complexes \(C\). <b><u>Default we choose \(N\) as 1000, but you may change the number by changing `Number of iterations' in the parameter setting under `Run your own datasets' section.</u></b> Among the randomized complexes, a vector of null overlaps, \(N_j\) is generated. For the \(j^{th}\) randomized complex, which comprises the set of proteins \(K_j\), \(N_j\), is defined as follows:\[N_j=\frac{|S\cap K_j|}{|K_j|}\]The empirical p-value is the proportion of null overlaps in \(N_j\) greater than or equal to the observed overlap \(O\). For the \(i^{th}\) complex \(C_i\) in the complex vector, its p-value, \(pval_i\) is:\[pval_i=\frac{\sum\limits_{j=1}^{N}[N_j\ge 0]}{N}\]If the FCS p-value falls below a significance p-value threshold, then all member proteins of the complex, including the unobserved ones, are predicted as present. </p>
-<p>&lt;/div&gt;</p>
-<div class="cleaner h30"></div>
-<div class="col_w310 float_l">
 
-### HE
+<h3 id="he">HE</h3>
 <p>In HE, the set of observed proteins are compared against a vector of protein complexes. Given a total number of proteins \(N\), with \(M\) of these belonging to a complex and \(n\) of these proteins in the differential set, the probability \(P\) that \(b\) or more proteins from the differential set are associated by chance with the complex is given by:\[P(X\ge b)=\sum\limits_{i=b}^{min(n,M)}\frac{C_n^iC_{N-n}^{M-i}}{C_N^M}\]\(P(X\ge b)\) is the HE p-value. A complex is declared significant if the HE p-value falls below the threshold.</p>
-</div>
-<div class="col_w310 float_r">
 
- ### GSEA
+<p>### GSEA</p>
 <p>Gene Set Enrichment Analysis (GSEA) uses a Kolmogorov-Smirnov (KS) statistic. Here, the two-sample KS test is used to evaluate if the distribution of ranks based on the t-statistic of proteins in a complex differs from that of proteins outside the complex. Denoting proteins in the complex as the set \(C\) and proteins outside the complex as the set \(C'\), the KS-statistic \(KS_{C,C'}\)is expressed as:\[KS_{C,C'}=\max\limits_x|F_{1,C}(x)-F_{2,C'}(x)|\]where \(F_{1,C}(x)\) and \(F_{2,C'}(x)\) are respectively the fraction of proteins in \(C\) and \(C'\) whose rank is higher than the rank \(x\). The null hypothesis is rejected at a significance threshold if\[KS_{C,C'}\ge c(\alpha)*\sqrt{\frac{|C|+|C'|}{|C|*|C'|}}\]Where \(c(\alpha)\) is the critical value at a given alpha level. </p>
-</div>
-<div class="cleaner"></div>
-<div>
+
 <p>Notably, <b><u>For FCS, HE and GSEA, the default p-value threshold is 0.05. You may change your own cutoff by changing `p-val cutoff for FCS, HE and GSEA' in the parameter setting under `Run your own datasets' section.</u></b></p>
-</div>
-<div class="h30"></div>
-<p><a href="#" class="gototop">Go To Top</a>
-&lt;/div&gt;</p>
-<div id="example" class="content_top"></div>
-<div class="content_box">
-<div class="content_title content_example"></div>
 
-## Example
-### Example dataset: RC_N data
+<h2 id="example">Example</h2>
+<h3 id="example-dataset-rc_n-data">Example dataset: RC_N data</h3>
 <p>One proteomics expression datasets are provided. The renal cancer dataset (RC) comprises 12 normal (RC_N) and 12 cancer (RC_C) samples. We provide RC_N sample as an example. Press the button you may check how does the <a href="/static/csv/RCN.csv" download="RCN.csv">sample</a> looks like.</p>
-<br />
+<p><br /></p>
 
-### Protein complex
+<h3 id="protein-complex">Protein complex</h3>
 <p>Protein complex is obtained from <a href="http://mips.helmholtz-muenchen.de/genre/proj/corum/">CORUM</a>. We use CORUM complex 2018 release human dataset as our default complex database. You may check how the complex looks like by <a href="/static/csv/complex.csv" download="complex.csv">clicking here</a></p>
 
-<br />
+<p><br /></p>
 
-### Example results
+<h3 id="example-results">Example results</h3>
 <ul>
     <li><a href="/static/csv/example_protrecres.csv" download="example_protrecres.csv">PROTREC result</a></li>
     <li><a href="/static/csv/example_fcsres.csv" download="example_fcsres.csv">FCS result</a></li>
     <li><a href="/static/csv/example_heres.csv" download="example_heres.csv">HE result</a></li>
     <li><a href="/static/csv/example_gseares.csv" download="example_gseares.csv">GSEA result</a></li>
 </ul>
-                
-            
 
-## Submit youur dataset
+<h2 id="submit-youur-dataset">Submit youur dataset</h2>
 <p> You can submit your own dataset and protein complex to get the protein inference result. If it is your first time using this tool, you may refer to <a href="#">Example</a> section to see how it works. If no file is submitted, the program will use default file. We encourage users to use the default protein complex.</p>
 
-<div class="h30"></div>
-
-<div class="post_box float_l">
-
-#### Step 1. Upload your Dataset and Protein Complex
+<h4 id="step-1-upload-your-dataset-and-protein-complex">Step 1. Upload your Dataset and Protein Complex</h4>
 <p> Dataset (Default: example dataset)</p>
 <div>
     <input id="datasetSelector" type="file" accept=".csv" />
@@ -404,33 +384,8 @@ $(function () {
     <button onclick="chooseFile('complexSelector')">Upload</button>
 </div>
 <p id="complexHint" class="hint"></p>
-</div>
+<p>&lt;/div&gt;</p>
 <div class="post_box float_r">
- 
- #### Step 3. Enter your parameters
-<div>
-    <label>Number of iterations</label><br />
-    <input id="iterInput" />
-</div>
-<div>
-    <label>Min size of protein complex</label><br />
-    <input id="minsizeInput" />
-</div>
-<div>
-    <label>FDR of proteomic screen</label><br />
-    <input id="mafdrInput" />
-</div>
-<div>
-    <label>PROTREC score threshold</label><br />
-    <input id="protrecscoresetInput" />
-</div>
-<div>
-    <label>FDR threshold for FCS, HE and GSEA</label><br />
-    <input id="fdrsetInput" />
-</div>
-</div>
-<div class="cleaner h10"></div>
-<div class="post_box float_l">
 
 #### Step 2. Select the results
 <b>Select the method</b>
@@ -469,7 +424,30 @@ Upload your reference list
 </div>
 <div class="post_box float_r">
 
-#### Step 4. Enter email and key
+#### Step 3. Enter your parameters
+<div>
+    <label>Number of iterations</label><br />
+    <input id="iterInput" />
+</div>
+<div>
+    <label>Min size of protein complex</label><br />
+    <input id="minsizeInput" />
+</div>
+<div>
+    <label>FDR of proteomic screen</label><br />
+    <input id="mafdrInput" />
+</div>
+<div>
+    <label>PROTREC score threshold</label><br />
+    <input id="protrecscoresetInput" />
+</div>
+<div>
+    <label>FDR threshold for FCS, HE and GSEA</label><br />
+    <input id="fdrsetInput" />
+</div>
+</div>
+
+<h4 id="step-4-enter-email-and-key">Step 4. Enter email and key</h4>
 <div>
     <label>Email Address</label> <br />
     <input id="email" />
@@ -480,13 +458,14 @@ Upload your reference list
 </div>
 <div class="h10"></div>
 <p>Click <a href="javascript:void(0)" onclick="getVerificationKey()">here</a> to get your verification key after putting in your email address.</p>
-    <label>Verification Key</label> <br />
-    <input id="key" />
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;label&gt;Verification Key&lt;/label&gt; &lt;br /&gt;
+&lt;input id="key"/&gt;
+</code></pre>
+</div>
 <p>Click <a href="javascript:void(0)" onclick="sendEmail()">here</a> to send your data to us. We will execute your data and send results back to your email.</p>
 <p id="emailHint" class="hint"></p>
-</div>
+<p>&lt;/div&gt;</p>
 <div class="cleaner"></div>
-</div>
 
 		<!--<p class="post-info">
 			本文由 <a href="/">liberxue</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为:2018-07-30 10:06:42</p>-->
