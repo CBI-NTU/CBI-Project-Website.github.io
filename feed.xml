@@ -7,9 +7,9 @@
     <atom:link href="https://cbi-ntu.github.io/CBI-Project-Website.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Novel ML Model enhances explainability for cancer biomarkers...</title>
+        <title>PROTREC - An algorithm for predicting and validating missing proteins in proteomics</title>
         <category>Cancer</category>
-        <description>PROTRECA novel network-based approach for predicting missing proteins (MPs) is proposed here. Thi...</description>
+        <description>PROTREC PROTEC is an algorithm for predicting and validating missing proteins in proteomics data ...</description>
         <pubDate>2018-07-30 10:06:42 </pubDate>
         <link>https://cbi-ntu.github.io/CBI-Project-Website.github.io/2018/07/30/wj.html</link>
         <guid isPermaLink="true">https://cbi-ntu.github.io/CBI-Project-Website.github.io/2018/07/30/wj.html</guid>
