@@ -342,7 +342,7 @@ $(function () {
 <h3 id="he">HE</h3>
 <p>In HE, the set of observed proteins are compared against a vector of protein complexes. Given a total number of proteins \(N\), with \(M\) of these belonging to a complex and \(n\) of these proteins in the differential set, the probability \(P\) that \(b\) or more proteins from the differential set are associated by chance with the complex is given by:\[P(X\ge b)=\sum\limits_{i=b}^{min(n,M)}\frac{C_n^iC_{N-n}^{M-i}}{C_N^M}\]\(P(X\ge b)\) is the HE p-value. A complex is declared significant if the HE p-value falls below the threshold.</p>
 
-<p>### GSEA</p>
+<h3 id="gsea">GSEA</h3>
 <p>Gene Set Enrichment Analysis (GSEA) uses a Kolmogorov-Smirnov (KS) statistic. Here, the two-sample KS test is used to evaluate if the distribution of ranks based on the t-statistic of proteins in a complex differs from that of proteins outside the complex. Denoting proteins in the complex as the set \(C\) and proteins outside the complex as the set \(C'\), the KS-statistic \(KS_{C,C'}\)is expressed as:\[KS_{C,C'}=\max\limits_x|F_{1,C}(x)-F_{2,C'}(x)|\]where \(F_{1,C}(x)\) and \(F_{2,C'}(x)\) are respectively the fraction of proteins in \(C\) and \(C'\) whose rank is higher than the rank \(x\). The null hypothesis is rejected at a significance threshold if\[KS_{C,C'}\ge c(\alpha)*\sqrt{\frac{|C|+|C'|}{|C|*|C'|}}\]Where \(c(\alpha)\) is the critical value at a given alpha level. </p>
 
 <p>Notably, <b><u>For FCS, HE and GSEA, the default p-value threshold is 0.05. You may change your own cutoff by changing `p-val cutoff for FCS, HE and GSEA' in the parameter setting under `Run your own datasets' section.</u></b></p>
@@ -384,11 +384,9 @@ $(function () {
     <button onclick="chooseFile('complexSelector')">Upload</button>
 </div>
 <p id="complexHint" class="hint"></p>
-<p>&lt;/div&gt;</p>
-<div class="post_box float_r">
 
-#### Step 2. Select the results
-<b>Select the method</b>
+<h4 id="step-2-select-the-results">Step 2. Select the results</h4>
+<p><b>Select the method</b></p>
 <div class="h10"></div>
 <div>
     <input type="radio" name="resultKind" /> <span class="optionSpan">PROTREC</span>
@@ -396,7 +394,7 @@ $(function () {
     <input type="radio" name="resultKind" /> <span class="optionSpan">ALL</span>
 </div>
 <div class="h20"></div>
-<b>Select the results</b>
+<p><b>Select the results</b></p>
 <div class="h10"></div>
 <div>
     <input type="checkbox" name="resultType" /> <span class="optionSpan">Raw predicted score matrix</span>
@@ -410,9 +408,9 @@ $(function () {
     <input type="checkbox" name="ref" /> <span class="optionSpan">Score distribution</span>
 </div>
 <div class="h20"></div>
-<b>Note: recovery rate and score distribution can only be calculated after you submit your reference list.</b><br />
+<p><b>Note: recovery rate and score distribution can only be calculated after you submit your reference list.</b><br /></p>
 <div class="h10"></div>
-Upload your reference list
+<p>Upload your reference list</p>
 <div class="h10"></div>
 <div>
     <input id="refSelector" type="file" accept=".csv" />
@@ -421,10 +419,8 @@ Upload your reference list
     <div class="h20"></div>
 </div>
 <p id="refHint" class="hint"></p>
-</div>
-<div class="post_box float_r">
 
-#### Step 3. Enter your parameters
+<h4 id="step-3-enter-your-parameters">Step 3. Enter your parameters</h4>
 <div>
     <label>Number of iterations</label><br />
     <input id="iterInput" />
@@ -445,7 +441,7 @@ Upload your reference list
     <label>FDR threshold for FCS, HE and GSEA</label><br />
     <input id="fdrsetInput" />
 </div>
-</div>
+<p>&lt;/div&gt;</p>
 
 <h4 id="step-4-enter-email-and-key">Step 4. Enter email and key</h4>
 <div>
@@ -458,9 +454,9 @@ Upload your reference list
 </div>
 <div class="h10"></div>
 <p>Click <a href="javascript:void(0)" onclick="getVerificationKey()">here</a> to get your verification key after putting in your email address.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;label&gt;Verification Key&lt;/label&gt; &lt;br /&gt;
-&lt;input id="key"/&gt;
-</code></pre>
+<div>
+    <label>Verification Key</label> <br />
+    <input id="key" />
 </div>
 <p>Click <a href="javascript:void(0)" onclick="sendEmail()">here</a> to send your data to us. We will execute your data and send results back to your email.</p>
 <p id="emailHint" class="hint"></p>
