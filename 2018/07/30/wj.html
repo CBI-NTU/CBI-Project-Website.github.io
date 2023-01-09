@@ -333,9 +333,11 @@ $(function () {
 <h3 id="protrec-1">PROTREC</h3>
 <p> PROTREC is a novel probability-based scoring scheme that estimates the probability of a protein being present in a screen. </p>
 <p>Specifically, to calculate PROTREC probability for a protein $\(x\)$, we first find all the protein complexes $\(z_i\)$ containing protein $\(x\)$. Not all complex we should consider since some complex contains so less proteins. <b><u>The default complex size threshold is 5, you may change it by changing `Min size of protein complex' in the parameter setting under `Run your own datasets' section.</u></b></p>
-<p>Then, we calculate the probability of a complex $\(z_i\in z\)$ being present: 
-- $\[p(z_i)=\frac{\sum\limits_{x_i\in L}(1-FDR)}{|z_i|}\]\(x_i\)$
-denotes a protein inside the complex $\(z_i\)$. $\(L\)$ denotes the set of proteins reported by the proteomic screen. <!--HERE CONTINUE LATEX TMR--> If \(x_i\) is reported by the proteomics screen \(L\), then its prior probability is \((1-FDR)\), where \(FDR\) is the false discovery rate of \(L\). <u><b>The default \(FDR\) is 0.01, you may change it by changing `FDR of proteomic screen' in the parameter setting under `Run your own datasets' section.</b></u></p>
+<p>Then, we calculate the probability of a complex 
+$\(z_i\in z\)$
+ being present:</p>
+<p><script type="math/tex">\[p(z_i)=\frac{\sum\limits_{x_i\in L}(1-FDR)}{|z_i|}\]\(x_i\)</script></p>
+<p>denotes a protein inside the complex $\(z_i\)$. $\(L\)$ denotes the set of proteins reported by the proteomic screen. <!--HERE CONTINUE LATEX TMR--> If \(x_i\) is reported by the proteomics screen \(L\), then its prior probability is \((1-FDR)\), where \(FDR\) is the false discovery rate of \(L\). <u><b>The default \(FDR\) is 0.01, you may change it by changing `FDR of proteomic screen' in the parameter setting under `Run your own datasets' section.</b></u></p>
 <p>PROTREC assume protein \(x\) being present in a sample is depe$ndent on the joint probability of it being present if its complex is formed, and the probability it is present if its constituent complex is not formed. Since there might be multiple protein complexes, PROTREC computes the probability of a protein \(x\) being present in a sample being screened using each of the complexes that the protein \(x\) is a member of and returns the maximum:\[p(x)=\max_{z_i\in z}\{p(x|z_i)p(z_i)+p(x|\overline{z_i})p(\overline{z_i})\}\]This way, we can calculate all protein's PROTREC score. We can sort the proteins by their score and predict unreported proteins above a given PROTREC score threshold as predicted missing proteins. <b><u>By default, we use 0.95 as the cutoff. You may change your own cutoff by changing `PROTREC score threshold' in the parameter setting under `Run your own datasets' section.</u></b></p>
 
 <h3 id="fcs">FCS</h3>
