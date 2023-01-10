@@ -255,11 +255,12 @@ button, input, select, textarea {
     font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
     font-size: 13px;
     line-height: 1.6;
+    background-color : #d1d1d1; 
     resize: none;
 }
 
 input:required:invalid, input:focus:invalid, textarea:required:invalid, textarea:focus:invalid {
-    box-shadow: none;
+    /*box-shadow: none;*/
 }
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
