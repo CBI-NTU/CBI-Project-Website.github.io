@@ -191,55 +191,45 @@ LLLLLLLLLLLLLLLLLLLLLLLLiiiiiiiibbbbbbbbbbbbbbbb       eeeeeeeeeeeeee   rrrrrrr 
 <h3 id="protrec-1">PROTREC</h3>
 <p> PROTREC is a novel probability-based scoring scheme that estimates the probability of a protein being present in a screen. </p>
 
-<p>Specifically, to calculate PROTREC probability for a protein 
-$(x)$, we first find all the protein complexes $(z_i)$ containing protein $(x)$. Not all complex we should consider since some complex contains so less proteins. <b><u>The default complex size threshold is 5, you may change it by changing "Min size of protein complex" in the parameter setting under "Run your own datasets" section.</u></b></p>
+<p>Specifically, to calculate PROTREC probability for a protein \(x\), we first find all the protein complexes \(z_i\) containing protein \(x\). Not all complex we should consider since some complex contains so less proteins. <b><u>The default complex size threshold is 5, you may change it by changing `Min size of protein complex' in the parameter setting under `Run your own datasets' section.</u></b></p>
 
-<p>Then, we calculate the probability of a complex $(z_i\in z)$ being present: 
-<script type="math/tex">\[p(z_i)=\frac{\sum\limits_{x_i\in L}(1-FDR)}{|z_i|}\]\(x_i\)</script></p>
+<p>Then, we calculate the probability of a complex \(z_i\in z\) being present:\[p(z_i)=\frac{\sum\limits_{x_i\in L}(1-FDR)}{|z_i|}\]\(x_i\) denotes a protein inside the complex \(z_i\). \(L\) denotes the set of proteins reported by the proteomic screen. If \(x_i\) is reported by the proteomics screen \(L\), then its prior probability is \((1-FDR)\), where \(FDR\) is the false discovery rate of \(L\). <u><b>The default \(FDR\) is 0.01, you may change it by changing `FDR of proteomic screen' in the parameter setting under `Run your own datasets' section.</b></u></p>
 
-<p>denotes a protein inside the complex $(z_i)$. $(L)$ denotes the set of proteins reported by the proteomic screen. &lt;/p&gt;</p>
+<p>PROTREC assume protein \(x\) being present in a sample is dependent on the joint probability of it being present if its complex is formed, and the probability it is present if its constituent complex is not formed. Since there might be multiple protein complexes, PROTREC computes the probability of a protein \(x\) being present in a sample being screened using each of the complexes that the protein \(x\) is a member of and returns the maximum:\[p(x)=\max_{z_i\in z}\{p(x|z_i)p(z_i)+p(x|\overline{z_i})p(\overline{z_i})\}\]This way, we can calculate all protein's PROTREC score. We can sort the proteins by their score and predict unreported proteins above a given PROTREC score threshold as predicted missing proteins. <b><u>By default, we use 0.95 as the cutoff. You may change your own cutoff by changing `PROTREC score threshold' in the parameter setting under `Run your own datasets' section.</u></b></p>
 
-<p>If \(x_i\) is reported by the proteomics screen \(L\), then its prior probability is \((1-FDR)\), where \(FDR\) is the false discovery rate of \(L\). <u><b>The default \(FDR\) is 0.01, you may change it by changing "FDR of proteomic screen" in the parameter setting under "Run your own datasets" section.</b></u>
-<p>PROTREC assume protein \(x\) being present in a sample is depe$ndent on the joint probability of it being present if its complex is formed, and the probability it is present if its constituent complex is not formed. Since there might be multiple protein complexes, PROTREC computes the probability of a protein \(x\) being present in a sample being screened using each of the complexes that the protein \(x\) is a member of and returns the maximum:\[p(x)=\max_{z_i\in z}\{p(x|z_i)p(z_i)+p(x|\overline{z_i})p(\overline{z_i})\}\]This way, we can calculate all protein's PROTREC score. We can sort the proteins by their score and predict unreported proteins above a given PROTREC score threshold as predicted missing proteins. <b><u>By default, we use 0.95 as the cutoff. You may change your own cutoff by changing `PROTREC score threshold' in the parameter setting under `Run your own datasets' section.</u></b></p>
-
-### FCS
+<h3 id="fcs">FCS</h3>
 <p>FCS tests whether a network is significantly enriched given the observed proteins. Given a set of observed proteins in a proteomics screen \(S\), and a list of component proteins \(M\) from protein complex \(C\), an observed overlap \(O\), which is expressed as: \[O=\frac{|S\cap M|}{|M|}\]To determine if the overlap \(O\) is significant, a set \(N\) of randomized complexes of size are generated using a reference pool of unique proteins drawn from the complexes \(C\). <b><u>Default we choose \(N\) as 1000, but you may change the number by changing `Number of iterations' in the parameter setting under `Run your own datasets' section.</u></b> Among the randomized complexes, a vector of null overlaps, \(N_j\) is generated. For the \(j^{th}\) randomized complex, which comprises the set of proteins \(K_j\), \(N_j\), is defined as follows:\[N_j=\frac{|S\cap K_j|}{|K_j|}\]The empirical p-value is the proportion of null overlaps in \(N_j\) greater than or equal to the observed overlap \(O\). For the \(i^{th}\) complex \(C_i\) in the complex vector, its p-value, \(pval_i\) is:\[pval_i=\frac{\sum\limits_{j=1}^{N}[N_j\ge 0]}{N}\]If the FCS p-value falls below a significance p-value threshold, then all member proteins of the complex, including the unobserved ones, are predicted as present. </p>
 
-### HE
+<h3 id="he">HE</h3>
 <p>In HE, the set of observed proteins are compared against a vector of protein complexes. Given a total number of proteins \(N\), with \(M\) of these belonging to a complex and \(n\) of these proteins in the differential set, the probability \(P\) that \(b\) or more proteins from the differential set are associated by chance with the complex is given by:\[P(X\ge b)=\sum\limits_{i=b}^{min(n,M)}\frac{C_n^iC_{N-n}^{M-i}}{C_N^M}\]\(P(X\ge b)\) is the HE p-value. A complex is declared significant if the HE p-value falls below the threshold.</p>
 
-
-### GSEA
+<h3 id="gsea">GSEA</h3>
 <p>Gene Set Enrichment Analysis (GSEA) uses a Kolmogorov-Smirnov (KS) statistic. Here, the two-sample KS test is used to evaluate if the distribution of ranks based on the t-statistic of proteins in a complex differs from that of proteins outside the complex. Denoting proteins in the complex as the set \(C\) and proteins outside the complex as the set \(C'\), the KS-statistic \(KS_{C,C'}\)is expressed as:\[KS_{C,C'}=\max\limits_x|F_{1,C}(x)-F_{2,C'}(x)|\]where \(F_{1,C}(x)\) and \(F_{2,C'}(x)\) are respectively the fraction of proteins in \(C\) and \(C'\) whose rank is higher than the rank \(x\). The null hypothesis is rejected at a significance threshold if\[KS_{C,C'}\ge c(\alpha)*\sqrt{\frac{|C|+|C'|}{|C|*|C'|}}\]Where \(c(\alpha)\) is the critical value at a given alpha level. </p>
 
 <p>Notably, <b><u>For FCS, HE and GSEA, the default p-value threshold is 0.05. You may change your own cutoff by changing `p-val cutoff for FCS, HE and GSEA' in the parameter setting under `Run your own datasets' section.</u></b></p>
 
-## Example
-### Example dataset: RC_N data
+<h2 id="example">Example</h2>
+<h3 id="example-dataset-rc_n-data">Example dataset: RC_N data</h3>
 <p>One proteomics expression datasets are provided. The renal cancer dataset (RC) comprises 12 normal (RC_N) and 12 cancer (RC_C) samples. We provide RC_N sample as an example. Press the button you may check how does the <a href="/static/csv/RCN.csv" download="RCN.csv">sample</a> looks like.</p>
-<br />
+<p><br /></p>
 
-### Protein complex
+<h3 id="protein-complex">Protein complex</h3>
 <p>Protein complex is obtained from <a href="http://mips.helmholtz-muenchen.de/genre/proj/corum/">CORUM</a>. We use CORUM complex 2018 release human dataset as our default complex database. You may check how the complex looks like by <a href="/static/csv/complex.csv" download="complex.csv">clicking here</a></p>
 
-<br />
+<p><br /></p>
 
-### Example results
+<h3 id="example-results">Example results</h3>
 <ul>
     <li><a href="/static/csv/example_protrecres.csv" download="example_protrecres.csv">PROTREC result</a></li>
     <li><a href="/static/csv/example_fcsres.csv" download="example_fcsres.csv">FCS result</a></li>
     <li><a href="/static/csv/example_heres.csv" download="example_heres.csv">HE result</a></li>
     <li><a href="/static/csv/example_gseares.csv" download="example_gseares.csv">GSEA result</a></li>
 </ul>
-                
-            
 
-## Submit youur dataset
+<h2 id="submit-youur-dataset">Submit youur dataset</h2>
 <p> You can submit your own dataset and protein complex to get the protein inference result. If it is your first time using this tool, you may refer to <a href="#">Example</a> section to see how it works. If no file is submitted, the program will use default file. We encourage users to use the default protein complex.</p>
 
-
-
-#### Step 1. Upload your Dataset and Protein Complex
+<h4 id="step-1-upload-your-dataset-and-protein-complex">Step 1. Upload your Dataset and Protein Complex</h4>
 <p> Dataset (Default: example dataset)</p>
 <div>
     <input id="datasetSelector" type="file" accept=".csv" />
@@ -256,9 +246,8 @@ $(x)$, we first find all the protein complexes $(z_i)$ containing protein $(x)$.
 </div>
 <p id="complexHint" class="hint"></p>
 
-
-#### Step 2. Select the results
-<b>Select the method</b>
+<h4 id="step-2-select-the-results">Step 2. Select the results</h4>
+<p><b>Select the method</b></p>
 <div class="h10"></div>
 <div>
     <input type="radio" name="resultKind" /> <span class="optionSpan">PROTREC</span>
@@ -266,7 +255,7 @@ $(x)$, we first find all the protein complexes $(z_i)$ containing protein $(x)$.
     <input type="radio" name="resultKind" /> <span class="optionSpan">ALL</span>
 </div>
 <div class="h20"></div>
-<b>Select the results</b>
+<p><b>Select the results</b></p>
 <div class="h10"></div>
 <div>
     <input type="checkbox" name="resultType" /> <span class="optionSpan">Raw predicted score matrix</span>
@@ -280,9 +269,9 @@ $(x)$, we first find all the protein complexes $(z_i)$ containing protein $(x)$.
     <input type="checkbox" name="ref" /> <span class="optionSpan">Score distribution</span>
 </div>
 <div class="h20"></div>
-<b>Note: recovery rate and score distribution can only be calculated after you submit your reference list.</b><br />
+<p><b>Note: recovery rate and score distribution can only be calculated after you submit your reference list.</b><br /></p>
 <div class="h10"></div>
-Upload your reference list
+<p>Upload your reference list</p>
 <div class="h10"></div>
 <div>
     <input id="refSelector" type="file" accept=".csv" />
@@ -292,7 +281,7 @@ Upload your reference list
 </div>
 <p id="refHint" class="hint"></p>
 
-#### Step 3. Enter your parameters
+<h4 id="step-3-enter-your-parameters">Step 3. Enter your parameters</h4>
 <div>
     <label>Number of iterations</label><br />
     <input id="iterInput" />
@@ -313,9 +302,9 @@ Upload your reference list
     <label>FDR threshold for FCS, HE and GSEA</label><br />
     <input id="fdrsetInput" />
 </div>
-&lt;/div&gt;
+<p>&lt;/div&gt;</p>
 
-#### Step 4. Enter email and key
+<h4 id="step-4-enter-email-and-key">Step 4. Enter email and key</h4>
 <div>
     <label>Email Address</label> <br />
     <input id="email" />
@@ -332,10 +321,9 @@ Upload your reference list
 </div>
 <p>Click <a href="javascript:void(0)" onclick="sendEmail()">here</a> to send your data to us. We will execute your data and send results back to your email.</p>
 <p id="emailHint" class="hint"></p>
-&lt;/div&gt;
+<p>&lt;/div&gt;</p>
 <div class="cleaner"></div>
-&lt;/html&gt;
-</p>
+<p>&lt;/html&gt;</p>
 
 		<!--<p class="post-info">
 			本文由 <a href="/">liberxue</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为:2018-07-30 10:06:42</p>-->
@@ -409,7 +397,7 @@ Upload your reference list
 </footer>
 <script src="//cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js"></script>
-<script src="/search/js/cb-search.js"></script>
+<script src="https://cbi-ntu.github.io/CBI-Project-Website.github.io/search/js/cb-search.js"></script>
 <!--<script>
 $(function () {
     setTimeout(function () {
