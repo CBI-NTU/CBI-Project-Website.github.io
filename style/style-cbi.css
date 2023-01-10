@@ -254,7 +254,7 @@ table thead tr {
 button, input, select, textarea {
     font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
     font-size: 13px;
-    line-height: 1.6;
+    /*line-height: 1.6;*/
     background-color : #d1d1d1; 
     resize: none;
 }
